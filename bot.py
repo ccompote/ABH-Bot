@@ -4,6 +4,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 from bs4 import BeautifulSoup
+from shared_data import closest_appointment
+from date_doc import find_or_create_document
 
 
 def open_website(driver, url):
@@ -45,7 +47,6 @@ def find_selected_time(driver):
     return soup.find('span').text
 
 def main():
-    closest_appointment = {}
     url = "https://www.heilbronn.de/rathaus/buergerservice-a-z/inhalt/auslaenderbehoerde.html"
     driver = webdriver.Chrome()
 
@@ -67,6 +68,8 @@ def main():
         # find given slot
         closest_appointment['time'] = find_selected_time(driver)
         print("Selected time:", closest_appointment['time'])
+        # print(closest_appointment)
+        find_or_create_document(closest_appointment)
 
     finally:
         # Close the browser window

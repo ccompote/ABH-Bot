@@ -1,1 +1,5 @@
-Hello, this is a new document!
+{
+  "month": "Feb",
+  "day": "8",
+  "time": " 14:20 - 14:40"
+}
